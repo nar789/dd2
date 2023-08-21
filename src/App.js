@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { Canvas } from '@react-three/fiber';
 import './App.css';
+import { OrbitControls } from '@react-three/drei';
+import {Happy} from './Happy'
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='back'>
+      <Canvas  shadows camera={{ position: [0, 0, 4], fov: 50 }}>
+        <ambientLight intensity={0.8}/>
+        <spotLight position={[0.5, 2, 0.5]} angle={0.5} penumbra={2} />
+        <pointLight position={[0, 1, 2]} intensity={3} />
+        <pointLight position={[1, 1, 1]} />
+        <Happy />
+        <OrbitControls />
+        <axesHelper />
+      </Canvas>
     </div>
   );
 }
