@@ -19,20 +19,46 @@
     color: transparent;
     text-align: center;
   }
+  input {
+    background-color: transparent;
+    border: 0px solid;
+    height: 1px;
+    width: 1px;
+    color: #CCC;
+}
+*:focus {
+    outline: none;
+}
   
 </style>
   </head>
   <body>
-    <div style="position: absolute; top:10px; padding:10px; font-size: 20px; width: 100%; z-index: 99;">
-      <span style="font-size: 100px;">푸시업</span><br>
-      가슴이 바닥에 닿기 전까지 <br>팔꿈치를 굽힌다.
+    <input type="text" id="prompt" style="width: 1px; border:0px;"/>
+    <div id="prompt-div" style="position: absolute; 
+    height:50%;
+    top:10px; padding:20px; font-size: 35px; width: 100%; z-index: 99;" onclick="divclick()">
+      
     </div>
-    <!--
-    <div style="position: absolute; top:10px; padding:10px; font-size: 20px; width: 100%; z-index: 99;">
-      <span style="font-size: 100px;">목풀기<br>운동</span><br>
-      한쪽 방향으로 머리를 당겨준다.
-    </div>
-    -->
+    
     <div id="root"></div>
+    <script src="jquery.min.js"></script>
+    <script>
+      function divclick() {
+       $('#prompt').focus();
+      }
+      function update() {
+        var text = $('#prompt').val();
+        if(text == '') {
+          text = "동작을 만들어보세요."
+        }
+        $('#prompt-div').html(text);
+        
+      }
+
+      setInterval(()=>{
+        update();
+      }, 100);
+      
+    </script>
   </body>
 </html>
