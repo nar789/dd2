@@ -43,6 +43,8 @@
     <div id="root"></div>
     <script src="jquery.min.js"></script>
     <script>
+      window.left=0;
+      window.right=0;
       function divclick() {
        $('#prompt').focus();
       }
@@ -52,6 +54,40 @@
           text = "동작을 만들어보세요."
         }
         $('#prompt-div').html(text);
+        words = text.split(' ');
+        words = words.reverse();
+        let bw = '';
+        for(w of words) {
+          if(w == '올' || w=='내') {
+            bw = w;
+            continue;
+          }
+          
+          if(w.includes("왼") && bw.includes("올")) {
+            window.left = 1;
+            window.right = 0;
+            break;
+          } 
+          else if(w.includes("왼") && bw.includes("내")) {
+            window.left = 0;
+            window.right = 0;
+            break;
+          } 
+          else if(w.includes("오른") && bw.includes("올")) {
+            window.left = 0;
+            window.right = 1;
+            break;
+          } 
+          else if(w.includes("오른") && bw.includes("내")) {
+            window.left = 0;
+            window.right = 0;
+            break;
+          } 
+          
+
+        }
+        
+        
         
       }
 

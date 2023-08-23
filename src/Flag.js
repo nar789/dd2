@@ -16,6 +16,22 @@ export function Flag(props) {
     //actions.left.play();
     //actions.right.startAt(2)
     //actions.right.play()
+    setInterval(()=>{
+
+      if(window.left === 1) {
+        actions.left.play();
+      }
+      if(window.left === 0) {
+        actions.left.stop();
+      }
+      if(window.right === 1) {
+        actions.right.play();
+      }
+      if(window.right === 0) {
+        actions.right.stop();
+      }
+
+    }, 1000)
 
   }, [])
 
