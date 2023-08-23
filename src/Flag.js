@@ -10,29 +10,23 @@ export function Flag(props) {
   const { nodes, materials, animations } = useGLTF('/flag.glb')
   const { actions } = useAnimations(animations, group)
 
+  const callback = ()=> {
 
+    if(window.left === 1) {
+      actions.left.play();
+    }
+    if(window.left === 0) {
+      actions.left.stop();
+    }
+    if(window.right === 1) {
+      actions.right.play();
+    }
+    if(window.right === 0) {
+      actions.right.stop();
+    }
+  }
   useEffect(()=>{
-
-    //actions.left.play();
-    //actions.right.startAt(2)
-    //actions.right.play()
-    setInterval(()=>{
-
-      if(window.left === 1) {
-        actions.left.play();
-      }
-      if(window.left === 0) {
-        actions.left.stop();
-      }
-      if(window.right === 1) {
-        actions.right.play();
-      }
-      if(window.right === 0) {
-        actions.right.stop();
-      }
-
-    }, 1000)
-
+    setInterval(callback, 1000)
   }, [])
 
   return (

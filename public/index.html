@@ -45,6 +45,12 @@
     <script>
       window.left=0;
       window.right=0;
+
+      window.squart=0;
+      window.pushup=0;
+      window.neck=0;
+      window.flag=1;
+
       function divclick() {
        $('#prompt').focus();
       }
@@ -58,7 +64,13 @@
         words = words.reverse();
         let bw = '';
         for(w of words) {
-          if(w == '올' || w=='내') {
+
+      
+          if(w.includes('올') || w.includes('내')) {
+            window.squart=0;
+            window.pushup=0;
+            window.neck=0;
+            window.flag=1;
             bw = w;
             continue;
           }
@@ -83,8 +95,33 @@
             window.right = 0;
             break;
           } 
-          
 
+          if(w == '스쿼트') {
+            window.squart=1;
+            window.pushup=0;
+            window.neck=0;
+            window.flag=0;
+            window.left=0;
+            window.right=0;
+            break;
+          } else if(w=='푸시업') {
+            window.squart=0;
+            window.pushup=1;
+            window.neck=0;
+            window.flag=0;
+            window.left=0;
+            window.right=0;
+            break;
+          } else if(w=='목') {
+            window.squart=0;
+            window.pushup=0;
+            window.neck=1;
+            window.flag=0;
+            window.left=0;
+            window.right=0;
+            break;
+          }
+        
         }
         
         
